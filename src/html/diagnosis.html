@@ -6,17 +6,23 @@
     <title>Diagnosis</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <style>
       .center-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin-top: -50px; /* Adjust the margin-top as needed */
+        min-height: 100vh;
       }
       h1 {
         margin-bottom: 20px;
+      }
+      .response-textarea {
+        margin-top: 20px;
+      }
+      .btn-group {
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -41,8 +47,33 @@
       <div class="col-md-6">
         <h1 class="text-center mb-4">Diagnosis</h1>
 
+        <!-- Buttons for different options -->
+        <div class="btn-group d-flex justify-content-between">
+          <button type="button" class="btn btn-primary" id="makeRequest">
+            Make a Request
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="viewOutgoingRequests"
+          >
+            Outgoing Requests
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="viewRequestsForComments"
+          >
+            Incoming Requests
+          </button>
+        </div>
+
         <!-- Upload Photo Form -->
-        <form id="uploadPhotoForm" enctype="multipart/form-data">
+        <form
+          id="uploadPhotoForm"
+          enctype="multipart/form-data"
+          style="display: none"
+        >
           <div class="form-group">
             <label for="photo">Upload or Capture Photo</label>
             <input
@@ -74,12 +105,43 @@
             Submit
           </button>
         </form>
+
+        <!-- Hospital Response Textarea -->
+        <div class="response-textarea mt-4" style="display: none">
+          <label for="hospitalResponse">Hospital's Response</label>
+          <textarea
+            class="form-control"
+            id="hospitalResponse"
+            rows="3"
+            readonly
+          ></textarea>
+        </div>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
+        // Function to handle making a request
+        $("#makeRequest").click(function () {
+          // Show the upload form and response textarea
+          $("#uploadPhotoForm").show();
+          $(".response-textarea").show();
+        });
+
+        // Function to handle viewing outgoing requests and their responses
+        $("#viewOutgoingRequests").click(function () {
+          // Your implementation for viewing outgoing requests and responses
+          alert("View outgoing requests functionality");
+        });
+
+        // Function to handle viewing requests for comments
+        $("#viewRequestsForComments").click(function () {
+          // Your implementation for viewing requests for comments
+          alert("View requests for comments functionality");
+        });
+
+        // Function to handle form submission
         $("#uploadPhotoForm").submit(function (event) {
           event.preventDefault(); // Prevent default form submission
 
@@ -90,14 +152,17 @@
 
           $.ajax({
             type: "POST",
-            url: "/diagnosis/upload",
+            url: "diagnosis/upload",
             data: formData,
             processData: false,
             contentType: false,
             success: function (response) {
               // Handle success response
               alert("Photo uploaded successfully!");
-              // Optionally, do something with the response
+              // Optionally, set the hospital's response in the textarea
+              $("#hospitalResponse").val(
+                "Diagnosis received. We will review it shortly."
+              );
             },
             error: function (xhr, status, error) {
               // Handle error response
