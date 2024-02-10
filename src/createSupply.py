@@ -10,9 +10,9 @@ def create_supply():
     supply_name = data.get('supplyName')
     quantity = data.get('quantity')
     requested_by = data.get('requestedBy')
-    giving_name = data.get('givingName') #added
-    quantityb = data.get('quantityb') #added
-    given_by = data.get('givenBy') #added
+    giving_name = data.get('givingName') 
+    quantityb = data.get('quantityb') 
+    given_by = data.get('givenBy') 
 
     if supply_name and quantity and requested_by:
         mongo.db.supplies.insert_one({
@@ -22,11 +22,11 @@ def create_supply():
             "originHosp": requested_by
         })
         return jsonify({'message': 'Request created successfully'}), 200
-    if giving_name and quantityb and given_by: #changed
+    if giving_name and quantityb and given_by: 
         mongo.db.giving.insert_one({
             "isNeeded": False,
-            "item": giving_name, #changed
-            "quantity": quantityb, #changed
+            "item": giving_name, 
+            "quantity": quantityb,
             "originHosp": given_by
         })
         return jsonify({'message':'Supply created successfully'}), 200
