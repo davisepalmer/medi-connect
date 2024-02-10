@@ -1,75 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-  <style>
-    /* Custom styles for this template */
-    body {
-      padding-top: 56px;
-    }
-    .jumbotron {
-      background-image: url('https://via.placeholder.com/1500x500'); /* Replace with your image */
-      background-size: cover;
-      color: #fff;
-      padding: 100px 0;
-      text-align: center;
-    }
-    .featurette {
-      padding-top: 50px;
-      padding-bottom: 50px;
-      color: #333;
-    }
-    .featurette-heading {
-      font-weight: 300;
-      line-height: 1;
-    }
-    .lead {
-      font-size: 18px;
-      font-weight: 300;
-    }
-  </style>
-</head>
-<body>
-  <nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">MediConnect</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/login">Login/Register</a>
-          </li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Custom styles for this template */
+      body {
+        padding-top: 56px;
+      }
+      .jumbotron {
+        background-image: url("https://via.placeholder.com/1500x500"); /* Replace with your image */
+        background-size: cover;
+        color: #fff;
+        padding: 200px 0; /* Adjusted padding top and bottom */
+        text-align: center;
+      }
+      .featurette {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        color: #333;
+      }
+      .featurette-heading {
+        font-weight: 300;
+        line-height: 1;
+      }
+      .lead {
+        font-size: 18px;
+        font-weight: 300;
+      }
+      .login-register-container {
+        display: inline-block;
+        background-color: #007bff; /* Same shade as the left side of the navbar */
+        padding: 4px 4px;
+        border-radius: 15px; /* Adjust as needed for the desired curve */
+      }
+      .login-register {
+        color: #fff; /* Text color */
+        text-decoration: none; /* Remove default underline */
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-dark navbar-expand-md fixed-top"
+      style="background-image: linear-gradient(to right, #007bff, #ffffff)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand mr-auto ml-2 font-weight-bold" href="#"
+          >MediConnect</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <div class="login-register-container">
+                <a
+                  class="nav-link text-white font-weight-bold login-register"
+                  href="/login"
+                  >Login|Register</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>MediConnect</h1>
+        <p>
+          Hello, and Welcome to MediConnect! If your hospital is already a part
+          of our platform, !!LOGIN!! Otherwise, please make a new account for
+          your hospital !!HERE!!.
+        </p>
+        <br />
+        <p>
+          MediConnect is our software solution to the globe's growing issue of
+          limited medical supplies, leaving millions of lives at risk everyday.
+          MediConnect aims to connect hospitals around the world under a
+          streamlined, unified platform to exchange equipment and knowledge in a
+          matter of minutes. We understand that time can cost lives, and we want
+          to help you beat the clock.
+        </p>
       </div>
     </div>
-  </nav>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>MediConnect</h1>
-      <p>
-        Hello, and Welcome to MediConnect! If your hospital is already
-        a part of our platform, !!LOGIN!! Otherwise, please make a new account
-        for your hospital !!HERE!!.
-      </p>
-      <br />
-      <p>
-        MediConnect is our software solution to the globe's growing issue of limited
-        medical supplies, leaving millions of lives at risk everyday. MediConnect aims
-        to connect hospitals around the world under a streamlined, unified platform to 
-        exchange equipment and knowledge in a matter of minutes. We understand that time 
-        can cost lives, and we want to help you beat the clock.
-      </p>
-    </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

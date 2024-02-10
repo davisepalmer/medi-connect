@@ -13,7 +13,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        min-height: 80vh; /* Reduce the height for better placement */
       }
       h1 {
         margin-bottom: 20px;
@@ -24,6 +24,22 @@
       .btn-group {
         margin-top: 20px;
       }
+      .previous-requests {
+        margin-top: 50px;
+      }
+      .previous-requests h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .previous-requests img {
+        width: 200px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .previous-requests .request-info {
+        text-align: center;
+        margin-bottom: 30px;
+      }
     </style>
   </head>
   <body>
@@ -32,10 +48,10 @@
         <a class="navbar-brand" href="#">MediConnect</a>
         <ul class="navbar-nav flex-row">
           <li class="nav-item ml-3">
-            <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
+            <a class="nav-link text-white" href="/resources">Resources</a>
           </li>
           <li class="nav-item ml-3">
-            <a class="nav-link text-white" href="/resources">Resources</a>
+            <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
           </li>
           <li class="nav-item ml-3">
             <a class="nav-link text-white" href="/settings">Settings</a>
@@ -44,8 +60,9 @@
       </div>
     </nav>
     <div class="container center-container">
+      <!-- Updated container class -->
       <div class="col-md-6">
-        <h1 class="text-center mb-4">Diagnosis</h1>
+        <h1 class="text-center mb-4">Share Diagnosis</h1>
 
         <!-- Buttons for different options -->
         <div class="btn-group d-flex justify-content-between">
@@ -79,16 +96,12 @@
           </div>
           <div class="form-group">
             <label for="hospital">Receiving Hospital</label>
-            <div class="form-group">
-              <label for="hospital">Receiving Hospital</label>
-              <select class="form-control" id="hospital">
-                <option value="Hospital 1">Hospital 1</option>
-                <option value="Hospital 2">Hospital 2</option>
-                <option value="Hospital 3">Hospital 3</option>
-                <option value="Hospital 4">Hospital 4</option>
-                <option value="Hospital 5">Hospital 5</option>
-              </select>
-            </div>
+            <select class="form-control" id="hospital">
+              <option value="Hospital 1">Hospital 1</option>
+              <option value="Hospital 2">Hospital 2</option>
+              <option value="Hospital 4">Hospital 4</option>
+              <option value="Hospital 5">Hospital 5</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="note">Note</label>
@@ -117,6 +130,40 @@
       </div>
     </div>
 
+    <div class="container previous-requests">
+      <h2>Previous Requests</h2>
+      <!-- Sample images and text -->
+      <div class="row">
+        <div class="col-md-4">
+          <img src="image1.jpg" alt="Image 1" />
+          <div class="request-info">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              quis lorem ut libero malesuada feugiat.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src="image2.jpg" alt="Image 2" />
+          <div class="request-info">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              quis lorem ut libero malesuada feugiat.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src="image3.jpg" alt="Image 3" />
+          <div class="request-info">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              quis lorem ut libero malesuada feugiat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
@@ -126,6 +173,9 @@
           $("#uploadPhotoForm").show();
           $(".response-textarea").show();
         });
+
+        // Trigger click event for "Make a Request" button
+        $("#makeRequest").click();
 
         // Function to handle viewing requests for comments
         $("#viewRequestsForComments").click(function () {
