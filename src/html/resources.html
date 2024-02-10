@@ -1,112 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resources</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-      <style>
-        /* Style the tab buttons */
-        .tab {
-          overflow: hidden;
-          border: 1px solid #ccc;
-          background-color: #f1f1f1;
-        }
-    
-        /* Style the buttons inside the tab */
-        .tab button {
-          background-color: inherit;
-          float: left;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          padding: 14px 16px;
-          transition: 0.3s;
-        }
-    
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-          background-color: #ddd;
-        }
-    
-        /* Create an active/current tablink class */
-        .tab button.active {
-          background-color: #ccc;
-        }
-    
-        /* Style the tab content */
-        .tabcontent {
-          display: none;
-          padding: 20px;
-          border: 1px solid #ccc;
-          border-top: none;
-        }
-      </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-primary">
-      <div class="d-flex justify-content-between align-items-center w-100">
-        <a class="navbar-brand" href="#">MediConnect</a>
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item ml-3">
-            <a class="nav-link text-white" href="/resources">Resources</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link text-white" href="/settings">Settings</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <div class="container">
-      <h1 class="mt-4">Resources</h1>
-      
-      <!-- Tabs for hospitals giving supplies and hospitals requesting supplies -->   
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="supplyRequests-tab" data-toggle="tab" href="#supplyRequests" role="tab" aria-controls="supplyRequests" aria-selected="true">Supply Requests</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    /* Style the tab buttons */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <a class="navbar-brand" href="#">MediConnect</a>
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item ml-3">
+          <a class="nav-link text-white" href="/resources">Resources</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="supplyGivers-tab" data-toggle="tab" href="#supplyGivers" role="tab" aria-controls="supplyGivers" aria-selected="false">Supply Givers</a>
+        <li class="nav-item ml-3">
+          <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text-white" href="/settings">Settings</a>
         </li>
       </ul>
+    </div>
+  </nav>
 
-      <!-- Tab content for hospitals requesting supplies -->
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="supplyRequests" role="tabpanel" aria-labelledby="supplyRequests-tab">
+  <div class="container">
+    <h1 class="mt-4">Resources</h1>
+
+    <!-- Tabs for hospitals giving supplies and hospitals requesting supplies -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="supplyRequests-tab" data-toggle="tab" href="#supplyRequests" role="tab"
+          aria-controls="supplyRequests" aria-selected="true">Supply Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="supplyGivers-tab" data-toggle="tab" href="#supplyGivers" role="tab"
+          aria-controls="supplyGivers" aria-selected="false">Supply Givers</a>
+      </li>
+    </ul>
+
+    <!-- Tab content for hospitals requesting supplies -->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="supplyRequests" role="tabpanel" aria-labelledby="supplyRequests-tab">
         <!-- Create New Request Button -->
-        <button
-          type="button"
-          class="btn btn-primary mb-3"
-          data-toggle="modal"
-          data-target="#createRequestModal">
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createRequestModal">
           Create New Request
         </button>
 
         <!-- Modal for Create New Supply Request -->
-        <div
-          class="modal fade"
-          id="createRequestModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="createRequestModalLabel"
-          aria-hidden="true">
+        <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog"
+          aria-labelledby="createRequestModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="createRequestModalLabel">
                   Create New Request
                 </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -114,8 +103,8 @@
                 <!-- Form fields for creating new request -->
                 <form id="createRequestForm">
                   <div class="form-group">
-                    <label for="requestName">Supply Name</label>
-                    <input type="text" class="form-control" id="requestName" />
+                    <label for="supplyName">Supply Name</label>
+                    <input type="text" class="form-control" id="supplyName" />
                   </div>
                   <div class="form-group">
                     <label for="quantity">Quantity</label>
@@ -128,10 +117,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
                   Close
                 </button>
                 <button type="button" class="btn btn-primary" id="submitRequest">
@@ -145,24 +131,24 @@
         <!-- Supply Table for Requests-->
         <table class="table">
           <thead class="thead-dark">
-              <tr>
-                  <th scope="col">Supply Name</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Requested By</th>
-                  <th scope="col"></th>
-                  <!-- Empty header for the "Give" button column -->
-              </tr>
+            <tr>
+              <th scope="col">Supply Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Requested By</th>
+              <th scope="col"></th>
+              <!-- Empty header for the "Give" button column -->
+            </tr>
           </thead>
           <tbody>
-              {% for supply in supplies %}
-              <tr>
-                  <td>{{ supply.item }}</td>
-                  <td>{{ supply.quantity }}</td>
-                  <td>{{ supply.originHosp }}</td>
-                  <td><button type="button" class="btn btn-success">Give</button></td>
-                  <!-- Button to give supply -->
-              </tr>
-              {% endfor %}
+            {% for supply in supplies %}
+            <tr>
+              <td>{{ supply.item }}</td>
+              <td>{{ supply.quantity }}</td>
+              <td>{{ supply.originHosp }}</td>
+              <td><button type="button" class="btn btn-success">Give</button></td>
+              <!-- Button to give supply -->
+            </tr>
+            {% endfor %}
             <!-- Add more rows as needed -->
           </tbody>
         </table>
@@ -172,33 +158,20 @@
       <div class="tab-pane fade" id="supplyGivers" role="tabpanel" aria-labelledby="supplyGivers-tab">
         <div class="tab-pane fade show active" id="supplyGiven" role="tabpanel" aria-labelledby="supplyGiven-tab">
           <!-- Create New Supply Button -->
-          <button
-            type="button"
-            class="btn btn-primary mb-3"
-            data-toggle="modal"
-            data-target="#createSupplyModal">
+          <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createSupplyModal">
             Create New Supply
           </button>
-      
+
           <!-- Modal for Create New Supply Request -->
-          <div
-            class="modal fade"
-            id="createSupplyModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="createSupplyModalLabel"
-            aria-hidden="true">
+          <div class="modal fade" id="createSupplyModal" tabindex="-1" role="dialog"
+            aria-labelledby="createSupplyModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="createSupplyModalLabel">
                     Create New Supply
                   </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -220,10 +193,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     Close
                   </button>
                   <button type="button" class="btn btn-primary" id="submitSupply">
@@ -233,144 +203,128 @@
               </div>
             </div>
           </div>
-        <!-- Supply Table for Givers -->
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Hospital Name</th>
-              <th scope="col">Supply Details</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for supply in supplies %}
-            <tr>
+          <!-- Supply Table for Givers -->
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Hospital Name</th>
+                <th scope="col">Supply Details</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for supply in supplies %}
+              <tr>
                 <td>{{ supply.item }}</td>
                 <td>{{ supply.quantity }}</td>
                 <td>{{ supply.originHosp }}</td>
                 <td><button type="button" class="btn btn-success">Request</button></td>
                 <!-- Button to give supply -->
-            </tr>
-            {% endfor %}
-          <!-- Add more rows as needed -->
-        </tbody>
-        </table>
+              </tr>
+              {% endfor %}
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
 
-    <!-- Modal for Give Supply -->
-    <div
-      class="modal fade"
-      id="giveSupplyModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="giveSupplyModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="giveSupplyModalLabel">Give Supply</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p id="selectedSupply"></p>
-            <div class="form-group">
-              <label for="decrementCount">Decrement Count</label>
-              <input
-                s
-                type="number"
-                class="form-control"
-                id="decrementCount"
-                value="1"
-              />
+      <!-- Modal for Give Supply -->
+      <div class="modal fade" id="giveSupplyModal" tabindex="-1" role="dialog" aria-labelledby="giveSupplyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="giveSupplyModalLabel">Give Supply</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <button type="button" class="btn btn-danger" id="decrementButton">
-              Decrement
-            </button>
+            <div class="modal-body">
+              <p id="selectedSupply"></p>
+              <div class="form-group">
+                <label for="decrementCount">Decrement Count</label>
+                <input s type="number" class="form-control" id="decrementCount" value="1" />
+              </div>
+              <button type="button" class="btn btn-danger" id="decrementButton">
+                Decrement
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        // Handle form submission
-        $("#submitSupply").click(function () {
-          var supplyName = $("#supplyName").val();
-          var quantity = $("#quantity").val();
-          var requestedBy = $("#requestedBy").val();
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          // Handle form submission
+          $("#submitRequest").click(function () {
+            var supplyName = $("#supplyName").val();
+            var quantity = $("#quantity").val();
+            var requestedBy = $("#requestedBy").val();
 
-          $.ajax({
-            type: "POST",
-            url: "/create_supply",
-            contentType: "application/json",
-            data: JSON.stringify({
-              supplyName: supplyName,
-              quantity: quantity,
-              requestedBy: requestedBy,
-            }),
-            success: function (response) {
-              alert(response.message);
-              // Optionally, update the table with the new supply data
-            },
-            error: function (xhr, status, error) {
-              alert("Error creating supply: " + xhr.responseText);
-            },
+            $.ajax({
+              type: "POST",
+              url: "/create_supply",
+              contentType: "application/json",
+              data: JSON.stringify({
+                supplyName: supplyName,
+                quantity: quantity,
+                requestedBy: requestedBy,
+              }),
+              success: function (response) {
+                alert(response.message);
+                // Optionally, update the table with the new supply data
+              },
+              error: function (xhr, status, error) {
+                alert("Error creating supply: " + xhr.responseText);
+              },
+            });
+          });
+
+          // Handle click on "Give" button
+          $(".give-button").click(function () {
+            var supplyName = $(this).data("supply");
+            $("#selectedSupply").text("Selected Supply: " + supplyName);
+          });
+
+          // Handle click on "Decrement" button
+          $("#decrementButton").click(function () {
+            var supplyName = $("#selectedSupply").text().split(": ")[1];
+            var count = parseInt($("#decrementCount").val());
+
+            if (count <= 0) {
+              alert("Please enter a valid decrement count.");
+              return;
+            }
+
+            var quantityElement = $("td:contains(" + supplyName + ")").next();
+            var quantity = parseInt(quantityElement.text());
+
+            if (count > quantity) {
+              alert("Error: Decrement count exceeds available quantity.");
+              return;
+            }
+
+            $.ajax({
+              type: "POST",
+              url: "/decrement_supply",
+              data: { supplyName: supplyName, count: count },
+              success: function (response) {
+                alert("Quantity decremented successfully!");
+                var newQuantity = quantity - count;
+                quantityElement.text(newQuantity >= 0 ? newQuantity : 0);
+              },
+              error: function (xhr, status, error) {
+                alert("Error decrementing quantity: " + xhr.responseText);
+              },
+            });
+            $("#giveSupplyModal").modal("hide");
           });
         });
+      </script>
+</body>
 
-        // Handle click on "Give" button
-        $(".give-button").click(function () {
-          var supplyName = $(this).data("supply");
-          $("#selectedSupply").text("Selected Supply: " + supplyName);
-        });
-
-        // Handle click on "Decrement" button
-        $("#decrementButton").click(function () {
-          var supplyName = $("#selectedSupply").text().split(": ")[1];
-          var count = parseInt($("#decrementCount").val());
-
-          if (count <= 0) {
-            alert("Please enter a valid decrement count.");
-            return;
-          }
-
-          var quantityElement = $("td:contains(" + supplyName + ")").next();
-          var quantity = parseInt(quantityElement.text());
-
-          if (count > quantity) {
-            alert("Error: Decrement count exceeds available quantity.");
-            return;
-          }
-
-          $.ajax({
-            type: "POST",
-            url: "/decrement_supply",
-            data: { supplyName: supplyName, count: count },
-            success: function (response) {
-              alert("Quantity decremented successfully!");
-              var newQuantity = quantity - count;
-              quantityElement.text(newQuantity >= 0 ? newQuantity : 0);
-            },
-            error: function (xhr, status, error) {
-              alert("Error decrementing quantity: " + xhr.responseText);
-            },
-          });
-          $("#giveSupplyModal").modal("hide");
-        });
-      });
-    </script>
-  </body>
 </html>
 
 <!-- @app.route('/decrement_supply', methods=['POST'])

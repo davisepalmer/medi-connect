@@ -24,11 +24,11 @@ users = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', users=users)
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', users=users)
 
 @app.route('/login', methods=['POST'])
 def login_post():
@@ -97,6 +97,28 @@ def create_supply():
         return jsonify({'message':'Supply created successfully'}), 200
     else:
         return jsonify({'error': 'Invalid supply data provided'}), 400
+
+@app.route('/register')
+def register():
+    # if request.method == 'POST':
+    institution = request.form.get('institution')
+    password = request.form.get('password')
+    users[institution] = password
+
+    # # Check if the institution already exists
+    # if institution in users:
+    #     flash('Institution already exists. Please choose a different name.', 'error')
+    # else:
+    #     # Add the new institution to the institutions dictionary
+    #     users[institution] = password
+    #     flash('Institution registered successfully!', 'success')
+
+    # return render_template('login.html')
+    return redirect(url_for('login'))
+
+@app.route('/open_register')
+def open_register():
+    return render_template('register.html')
 
 
 if __name__ == '__main__':

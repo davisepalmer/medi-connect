@@ -53,11 +53,9 @@
       <div class="form-group">
         <select class="form-control" name="institution">
           <option value="">Select Institution</option>
-          <option value="hospital1">Hospital 1</option>
-          <option value="hospital2">Hospital 2</option>
-          <option value="hospital3">Hospital 3</option>
-          <option value="hospital4">Hospital 4</option>
-          <option value="hospital5">Hospital 5</option>
+          {% for institution in users %}
+            <option value="{{ institution }}">{{ institution }}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="form-group">
@@ -65,7 +63,7 @@
       </div>
       <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
-    <a href="/register" class="btn btn-secondary btn-block mt-2">Register an Institution</a>
+    <a href="/open_register" class="btn btn-secondary btn-block mt-2">Register an Institution</a>
   </div>
 </body>
 
