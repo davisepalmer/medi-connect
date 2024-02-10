@@ -13,9 +13,12 @@ app.template_folder = 'html'
 
 # Dummy user data (replace with your actual user data or database)
 users = {
-    'admin': 'password',
-    'hospitalA': 'password',
-    'hospitalB': 'password'
+    'Hospital 1': 'password',
+    'Hospital 2': 'password',
+    'Hospital 3': 'password',
+    'Hospital 4': 'password',
+    'Hospital 5': 'password'
+
 }
 
 
@@ -29,16 +32,18 @@ def login():
 
 @app.route('/login', methods=['POST'])
 def login_post():
-    username = request.form.get('username')
+    institution = request.form.get('institution')
     password = request.form.get('password')
 
-    # Check if username and password match the dummy user data
-    if users.get(username) == password:
+    # Check if institution and password match the dummy user data
+    #if users.get(institution) == password:
+    if password == "password":
         # Successful login, redirect to resources page
         return redirect(url_for('resources'))
     else:
         # Failed login, redirect back to login page
         return redirect(url_for('login'))
+
 
 @app.route('/settings')
 def settings():

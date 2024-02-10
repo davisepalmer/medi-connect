@@ -9,11 +9,11 @@ def login():
 
 @app.route('/login', methods=['POST'])
 def login_submit():
-    username = request.form['username']
+    username = request.form['institution']
     password = request.form['password']
     
     # Dummy authentication
-    if username == 'admin' and password == 'password':
+    if password == 'password':
         # Redirect to resources page
         return redirect(url_for('resources'))
     else:
@@ -28,3 +28,7 @@ def resources():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
