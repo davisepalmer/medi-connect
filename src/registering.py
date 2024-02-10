@@ -9,20 +9,3 @@ users = {
     'Hospital 4': 'password',
     'Hospital 5': 'password'
 }
-@app.route('/register')
-def register():
-    # if request.method == 'POST':
-    institution = request.form.get('institution')
-    password = request.form.get('password')
-    users[institution] = password
-
-    # # Check if the institution already exists
-    # if institution in users:
-    #     flash('Institution already exists. Please choose a different name.', 'error')
-    # else:
-    #     # Add the new institution to the institutions dictionary
-    #     users[institution] = password
-    #     flash('Institution registered successfully!', 'success')
-
-    # return render_template('login.html')
-    return redirect(url_for('login'))

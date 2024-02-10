@@ -17,7 +17,7 @@ from resources import resources
 from settings import settings
 from nonObjDiagnosis import diagnosis
 from createSupply import create_supply
-from registering import register
+# from registering import register
 
 
 users = {
@@ -41,14 +41,21 @@ def login_post():
     institution = request.form.get('institution')
     password = request.form.get('password')
 
-    # Check if institution and password match the dummy user data
-    #if users.get(institution) == password:
-    if password == "password":
-        # Successful login, redirect to resources page
+    if users.get(institution) == password:
         return redirect(url_for('resources'))
     else:
-        # Failed login, redirect back to login page
         return redirect(url_for('login'))
+
+@app.route('/register', methods=['POST'])
+def register():
+    institution = request.form.get('institution')
+    password = request.form.get('password')
+
+    if institution not in users:
+        users[institution] = password
+        return redirect(url_for('login'))
+    else:
+        return "Institution already exists."
 
 if __name__ == '__main__':
     app.run(debug=True)
