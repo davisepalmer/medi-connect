@@ -10,4 +10,5 @@ class Supply(db.Model):
         self.item = item
         self.quantity = quantity
         self.origin_hosp = origin_hosp
-
+    
+    
