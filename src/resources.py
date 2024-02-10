@@ -5,7 +5,6 @@ from app import app, mongo
 @app.route('/resources')
 def resources():
     supplies = mongo.db.supplies.find()
-    return render_template('resources.html', supplies=supplies)
     giving = mongo.db.giving.find()
-    return render_template('resources.html', giving=giving)
+    return render_template('resources.html', supplies=supplies, giving=giving)
     
