@@ -3,37 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock %}</title>
+    <title>Diagnosis</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <style>
+      .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-top: -50px; /* Adjust the margin-top as needed */
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-primary">
       <div class="d-flex justify-content-between align-items-center w-100">
         <a class="navbar-brand" href="#">MediConnect</a>
         <ul class="navbar-nav flex-row">
-          <!-- <li class="nav-item"><a class="nav-link" href="/">Home</a></li> -->
-
           <li class="nav-item ml-3">
-            <a class="nav-link text-white" class="nav-link" href="/resources"
-              >Resources</a
-            >
+            <a class="nav-link text-white" href="/resources">Resources</a>
           </li>
           <li class="nav-item ml-3">
-            <a class="nav-link text-white" class="nav-link" href="/diagnosis"
-              >Diagnosis</a
-            >
+            <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
           </li>
           <li class="nav-item ml-3">
-            <a class="nav-link text-white" class="nav-link" href="/settings"
-              >Settings</a
-            >
+            <a class="nav-link text-white" href="/settings">Settings</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container">{% block content %} {% endblock %}</div>
+    <div class="container center-container">
+      <div class="col-md-6">
+        <h1 class="text-center mb-4">Diagnosis</h1>
+
+        <!-- Upload Photo Form -->
+        <form id="uploadPhotoForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="photo">Upload or Capture Photo</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="photo"
+              accept="image/*"
+              capture="camera"
+            />
+          </div>
+          <div class="form-group">
+            <label for="hospital">Receiving Hospital</label>
+            <select class="form-control" id="hospital">
+              <option value="hospitalA">Hospital A</option>
+              <option value="hospitalB">Hospital B</option>
+              <!-- Add more options for hospitals as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="note">Note</label>
+            <input
+              type="text"
+              class="form-control"
+              id="note"
+              placeholder="Add a note (optional)"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#uploadPhotoForm").submit(function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          var formData = new FormData();
+          formData.append("photo", $("#photo")[0].files[0]);
+          formData.append("hospital", $("#hospital").val());
+          formData.append("note", $("#note").val());
+
+          $.ajax({
+            type: "POST",
+            url: "/diagnosis/upload",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              // Handle success response
+              alert("Photo uploaded successfully!");
+              // Optionally, do something with the response
+            },
+            error: function (xhr, status, error) {
+              // Handle error response
+              alert("Error uploading photo: " + xhr.responseText);
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>
