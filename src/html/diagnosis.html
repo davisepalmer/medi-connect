@@ -55,13 +55,6 @@
           <button
             type="button"
             class="btn btn-primary"
-            id="viewOutgoingRequests"
-          >
-            Outgoing Requests
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
             id="viewRequestsForComments"
           >
             Incoming Requests
@@ -86,11 +79,16 @@
           </div>
           <div class="form-group">
             <label for="hospital">Receiving Hospital</label>
-            <select class="form-control" id="hospital">
-              <option value="hospitalA">Hospital A</option>
-              <option value="hospitalB">Hospital B</option>
-              <!-- Add more options for hospitals as needed -->
-            </select>
+            <div class="form-group">
+              <label for="hospital">Receiving Hospital</label>
+              <select class="form-control" id="hospital">
+                <option value="Hospital 1">Hospital 1</option>
+                <option value="Hospital 2">Hospital 2</option>
+                <option value="Hospital 3">Hospital 3</option>
+                <option value="Hospital 4">Hospital 4</option>
+                <option value="Hospital 5">Hospital 5</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="note">Note</label>
@@ -129,16 +127,12 @@
           $(".response-textarea").show();
         });
 
-        // Function to handle viewing outgoing requests and their responses
-        $("#viewOutgoingRequests").click(function () {
-          // Your implementation for viewing outgoing requests and responses
-
-          alert("View outgoing requests functionality");
-        });
-
         // Function to handle viewing requests for comments
         $("#viewRequestsForComments").click(function () {
           // Your implementation for viewing requests for comments
+          // Hide make request form
+          $("#uploadPhotoForm").hide();
+          $(".response-textarea").hide();
           alert("View requests for comments functionality");
         });
 

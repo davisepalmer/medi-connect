@@ -1,5 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-
+from flask import Flask, render_template, redirect, url_for
+from flask_bootstrap import Bootstrap
+from flask_pymongo import PyMongo
+from app import app, mongo
+from importRegister import open_register
+from uploadPhoto import upload_photo
+from resources import resources
+from settings import settings
+from nonObjDiagnosis import diagnosis
+from createSupply import create_supply
+from registering import register
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for flash messaging
 
