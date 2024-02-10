@@ -98,5 +98,6 @@ def create_supply():
     else:
         return jsonify({'error': 'Invalid supply data provided'}), 400
 
+
 if __name__ == '__main__':
     app.run(debug=True)
