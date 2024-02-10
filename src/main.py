@@ -86,7 +86,15 @@ def create_supply():
             "quantity": quantity,
             "originHosp": requested_by
         })
-        return jsonify({'message': 'Supply created successfully'}), 200
+        return jsonify({'message': 'Request created successfully'}), 200
+    elif supply_name and quantity and given_by:
+        mongo.db.supplies.insert_one({
+            "isNeeded": False,
+            "item": supply_name,
+            "quantity": quantity,
+            "originHosp": given_by
+        })
+        return jsonify({'message':'Supply created successfully'}), 200
     else:
         return jsonify({'error': 'Invalid supply data provided'}), 400
 
