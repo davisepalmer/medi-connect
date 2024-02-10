@@ -1,71 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+      .login-container {
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-    .login-container {
-      max-width: 400px;
-      width: 100%;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+      .form-group {
+        margin-bottom: 15px;
+      }
 
-    .form-group {
-      margin-bottom: 15px;
-    }
+      input.form-control {
+        padding: 10px;
+        font-size: 14px;
+      }
 
-    input.form-control {
-      padding: 10px;
-      font-size: 14px;
-    }
+      button.btn-primary {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
 
-    button.btn-primary {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-  </style>
-</head>
+  <body>
+    <div class="login-container">
+      <h2 class="text-center mb-4">Login</h2>
 
-<body>
-  <div class="login-container">
-    <h2 class="text-center mb-4">Login</h2>
-
-    <!-- Flash messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
-    <div class="alert alert-{{ category }}">{{ message }}</div>
-    {% endfor %} {% endif %} {% endwith %}
-
-    <form action="/login" method="post">
-      <div class="form-group">
-        <select class="form-control" name="institution">
-          <option value="">Select Institution</option>
-          {% for institution in users %}
-          <option value="{{ institution }}">{{ institution }}</option>
-          {% endfor %}
-        </select>
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+      <div
+        class="tab-pane fade show active"
+        id="supplyRequests"
+        role="tabpanel"
+        aria-labelledby="supplyRequests-tab"
+      >
+        <!-- Note -->
+        <div class="alert alert-info mb-4">
+          These logins are temporary and for the datathon. Use one of the
+          drop-down Hospitals or create your own. For the pre-made ones, the
+          password is: <strong>password</strong>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Password" />
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </form>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <select class="form-control" name="institution">
+            <option value="">Select Institution</option>
+            {% for institution in users %}
+            <option value="{{ institution }}">{{ institution }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
 
-    <a href="/open_register" class="btn btn-secondary btn-block mt-2">Register an Institution</a>
-  </div>
-</body>
-
+      <a href="/open_register" class="btn btn-secondary btn-block mt-2"
+        >Register an Institution</a
+      >
+    </div>
+  </body>
 </html>
