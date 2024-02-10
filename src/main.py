@@ -67,6 +67,8 @@ def settings():
 def resources():
     supplies = mongo.db.supplies.find()
     return render_template('resources.html', supplies=supplies)
+    giving = mongo.db.supplies.find()
+    return render_template('resources.html', giving=giving)
 
 @app.route('/diagnosis')
 def diagnosis():
@@ -88,7 +90,7 @@ def create_supply():
         })
         return jsonify({'message': 'Request created successfully'}), 200
     elif supply_name and quantity and given_by:
-        mongo.db.supplies.insert_one({
+        mongo.db.giving.insert_one({
             "isNeeded": False,
             "item": supply_name,
             "quantity": quantity,
