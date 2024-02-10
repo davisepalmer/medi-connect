@@ -1,6 +1,6 @@
 class Diagnosis:
-    def __init__(self, photo, originHosp=""):
-        self.photo = -1
+    def __init__(self, photo = -1, originHosp=""):
+        self.photo = photo
         self.originHosp = originHosp
     
     def deletePhoto(self):
