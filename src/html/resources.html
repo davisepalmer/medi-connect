@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <a class="navbar-brand" href="#">MediConnect</a>
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" href="/resources">Resources</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" href="/diagnosis">Diagnosis</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" href="/settings">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="mt-4">Resources</h1>
+      <!-- Create New Supply Request Button -->
+      <button
+        type="button"
+        class="btn btn-primary mb-3"
+        data-toggle="modal"
+        data-target="#createSupplyModal"
+      >
+        Create New Supply Request
+      </button>
+
+      <!-- Modal for Create New Supply Request -->
+      <div
+        class="modal fade"
+        id="createSupplyModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="createSupplyModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createSupplyModalLabel">
+                Create New Supply Request
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form fields for creating new supply request -->
+              <form id="createSupplyForm">
+                <div class="form-group">
+                  <label for="supplyName">Supply Name</label>
+                  <input type="text" class="form-control" id="supplyName" />
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input type="number" class="form-control" id="quantity" />
+                </div>
+                <div class="form-group">
+                  <label for="requestedBy">Requested By</label>
+                  <input type="text" class="form-control" id="requestedBy" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary" id="submitSupply">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supply Table -->
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Supply Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Requested By</th>
+            <th scope="col"></th>
+            <!-- Empty header for the "Give" button column -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Placeholder rows for supplies -->
+          <tr>
+            <td>Supply 1</td>
+            <td>10</td>
+            <td>User 1</td>
+            <td><button type="button" class="btn btn-success">Give</button></td>
+            <!-- Button to give supply -->
+          </tr>
+          <tr>
+            <td>Supply 2</td>
+            <td>5</td>
+            <td>User 2</td>
+            <td><button type="button" class="btn btn-success">Give</button></td>
+            <!-- Button to give supply -->
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#submitSupply").click(function () {
+          // Extract form data
+          var formData = {
+            supplyName: $("#supplyName").val(),
+            quantity: $("#quantity").val(),
+            requestedBy: $("#requestedBy").val(),
+          };
+
+          // Send AJAX request to the server
+          $.ajax({
+            type: "POST",
+            url: "/create_supply",
+            data: JSON.stringify(formData),
+            contentType: "application/json",
+            success: function (response) {
+              // Handle success response
+              alert("Supply request created successfully!");
+              $("#createSupplyModal").modal("hide"); // Close the modal
+            },
+            error: function (xhr, status, error) {
+              // Handle error response
+              alert("Error creating supply request: " + xhr.responseText);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

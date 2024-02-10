@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <a class="navbar-brand" href="#">MediConnect</a>
+        <ul class="navbar-nav flex-row">
+          <!-- <li class="nav-item"><a class="nav-link" href="/">Home</a></li> -->
+
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" class="nav-link" href="/resources"
+              >Resources</a
+            >
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" class="nav-link" href="/diagnosis"
+              >Diagnosis</a
+            >
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link text-white" class="nav-link" href="/settings"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">{% block content %} {% endblock %}</div>
+  </body>
+</html>
