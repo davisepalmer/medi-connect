@@ -1,27 +1,13 @@
+class Supply(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    is_needed = db.Column(db.Boolean, nullable=False)
+    item = db.Column(db.String(100), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    origin_hosp = db.Column(db.String(100), nullable=False)
 
-class Supply:
-    def __init__(self, isNeeded, item = "", quantity=0, originHosp=""):
-        self.isNeeded = isNeeded 
+    def __init__(self, is_needed, item, quantity, origin_hosp):
+        self.is_needed = is_needed
         self.item = item
         self.quantity = quantity
-        self.originHosp = originHosp
-
-    ### DATA MEMBER EDITORS ###
-    def decQuantity(self, quantity, count=1):
-        self.quantity -= count
-    
-    def changeOriginHosp(self, originHosp):
-        self.originHosp = originHosp
-    
-    def changeIsNeeded(self, isNeeded):
-        self.isNeeded = isNeeded
-    
-    def deleteSupple(self):
-        self.isNeeded = False
-        self.quantity = -1
-        self.originHosp = ""
-    
-    
-
-    
+        self.origin_hosp = origin_hosp
 

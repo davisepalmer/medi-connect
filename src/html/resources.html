@@ -98,30 +98,26 @@
       <!-- Supply Table -->
       <table class="table">
         <thead class="thead-dark">
-          <tr>
-            <th scope="col">Supply Name</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Requested By</th>
-            <th scope="col"></th>
-            <!-- Empty header for the "Give" button column -->
-          </tr>
+            <tr>
+                <th scope="col">Supply Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Requested By</th>
+                <th scope="col"></th>
+                <!-- Empty header for the "Give" button column -->
+            </tr>
         </thead>
         <tbody>
-          <!-- Placeholder rows for supplies -->
-          <tr>
-            <td>Supply 1</td>
-            <td>10</td>
-            <td>User 1</td>
-            <td><button type="button" class="btn btn-success">Give</button></td>
-            <!-- Button to give supply -->
-          </tr>
-          <tr>
-            <td>Supply 2</td>
-            <td>5</td>
-            <td>User 2</td>
-            <td><button type="button" class="btn btn-success">Give</button></td>
-            <!-- Button to give supply -->
-          </tr>
+            {% for supply in supplies %}
+            <tr>
+                <td>{{ supply.item }}</td>
+                <td>{{ supply.quantity }}</td>
+                <td>{{ supply.originHosp }}</td>
+                <td><button type="button" class="btn btn-success">Give</button></td>
+                <!-- Button to give supply -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
           <!-- Add more rows as needed -->
         </tbody>
       </table>
@@ -134,6 +130,7 @@
         $("#submitSupply").click(function () {
           // Extract form data
           var formData = {
+            isNeeded: true,
             supplyName: $("#supplyName").val(),
             quantity: $("#quantity").val(),
             requestedBy: $("#requestedBy").val(),
