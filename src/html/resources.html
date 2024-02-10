@@ -157,16 +157,11 @@
             <div class="form-group">
               <label for="decrementCount">Decrement Count</label>
               <input
+                s
                 type="number"
                 class="form-control"
                 id="decrementCount"
                 value="1"
-                <!--
-                Default
-                value
-                is
-                1
-                --
               />
             </div>
             <button type="button" class="btn btn-danger" id="decrementButton">
@@ -181,6 +176,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function () {
+        // Handle form submission
+        $("#submitSupply").click(function () {
+          var supplyName = $("#supplyName").val();
+          var quantity = $("#quantity").val();
+          var requestedBy = $("#requestedBy").val();
+
+          $.ajax({
+            type: "POST",
+            url: "/create_supply",
+            contentType: "application/json",
+            data: JSON.stringify({
+              supplyName: supplyName,
+              quantity: quantity,
+              requestedBy: requestedBy,
+            }),
+            success: function (response) {
+              alert(response.message);
+              // Optionally, update the table with the new supply data
+            },
+            error: function (xhr, status, error) {
+              alert("Error creating supply: " + xhr.responseText);
+            },
+          });
+        });
+
         // Handle click on "Give" button
         $(".give-button").click(function () {
           var supplyName = $(this).data("supply");
@@ -224,3 +244,26 @@
     </script>
   </body>
 </html>
+
+<!-- @app.route('/decrement_supply', methods=['POST'])
+def decrement_supply():
+    data = request.json
+    supply_name = data.get('supplyName')
+    count = int(data.get('count'))
+
+    if supply_name and count > 0:
+        # Assuming you have a MongoDB collection named 'supplies'
+        supply = mongo.db.supplies.find_one({'item': supply_name})
+        if supply:
+            current_quantity = supply.get('quantity')
+            if count <= current_quantity:
+                new_quantity = current_quantity - count
+                mongo.db.supplies.update_one({'item': supply_name}, {'$set': {'quantity': new_quantity}})
+                return jsonify({'message': 'Quantity decremented successfully'}), 200
+            else:
+                return jsonify({'error': 'Decrement count exceeds available quantity'}), 400
+        else:
+            return jsonify({'error': 'Supply not found'}), 404
+    else:
+        return jsonify({'error': 'Invalid data provided'}), 400
+ -->
