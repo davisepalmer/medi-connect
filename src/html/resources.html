@@ -6,7 +6,8 @@
     <title>Resources</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <nav class="navbar navbar-dark bg-primary">
@@ -97,60 +98,127 @@
       <!-- Supply Table -->
       <table class="table">
         <thead class="thead-dark">
-            <tr>
-                <th scope="col">Supply Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Requested By</th>
-                <th scope="col"></th>
-                <!-- Empty header for the "Give" button column -->
-            </tr>
+          <tr>
+            <th scope="col">Supply Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Requested By</th>
+            <th scope="col"></th>
+            <!-- Empty header for the "Give" button column -->
+          </tr>
         </thead>
         <tbody>
-            {% for supply in supplies %}
-            <tr>
-                <td>{{ supply.item }}</td>
-                <td>{{ supply.quantity }}</td>
-                <td>{{ supply.originHosp }}</td>
-                <td><button type="button" class="btn btn-success">Give</button></td>
-                <!-- Button to give supply -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-          <!-- Add more rows as needed -->
+          {% for supply in supplies %}
+          <tr>
+            <td>{{ supply.item }}</td>
+            <td>{{ supply.quantity }}</td>
+            <td>{{ supply.originHosp }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success give-button"
+                data-toggle="modal"
+                data-target="#giveSupplyModal"
+                data-supply="{{ supply.item }}"
+              >
+                Give
+              </button>
+            </td>
+            <!-- Button to give supply -->
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
+    </div>
+
+    <!-- Modal for Give Supply -->
+    <div
+      class="modal fade"
+      id="giveSupplyModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="giveSupplyModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="giveSupplyModalLabel">Give Supply</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="selectedSupply"></p>
+            <div class="form-group">
+              <label for="decrementCount">Decrement Count</label>
+              <input
+                type="number"
+                class="form-control"
+                id="decrementCount"
+                value="1"
+                <!--
+                Default
+                value
+                is
+                1
+                --
+              />
+            </div>
+            <button type="button" class="btn btn-danger" id="decrementButton">
+              Decrement
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#submitSupply").click(function () {
-          // Extract form data
-          var formData = {
-            isNeeded: true,
-            supplyName: $("#supplyName").val(),
-            quantity: $("#quantity").val(),
-            requestedBy: $("#requestedBy").val(),
-          };
+        // Handle click on "Give" button
+        $(".give-button").click(function () {
+          var supplyName = $(this).data("supply");
+          $("#selectedSupply").text("Selected Supply: " + supplyName);
+        });
 
-          // Send AJAX request to the server
+        // Handle click on "Decrement" button
+        $("#decrementButton").click(function () {
+          var supplyName = $("#selectedSupply").text().split(": ")[1];
+          var count = parseInt($("#decrementCount").val());
+
+          if (count <= 0) {
+            alert("Please enter a valid decrement count.");
+            return;
+          }
+
+          var quantityElement = $("td:contains(" + supplyName + ")").next();
+          var quantity = parseInt(quantityElement.text());
+
+          if (count > quantity) {
+            alert("Error: Decrement count exceeds available quantity.");
+            return;
+          }
+
           $.ajax({
             type: "POST",
-            url: "/create_supply",
-            data: JSON.stringify(formData),
-            contentType: "application/json",
+            url: "/decrement_supply",
+            data: { supplyName: supplyName, count: count },
             success: function (response) {
-              // Handle success response
-              alert("Supply request created successfully!");
-              $("#createSupplyModal").modal("hide"); // Close the modal
+              alert("Quantity decremented successfully!");
+              var newQuantity = quantity - count;
+              quantityElement.text(newQuantity >= 0 ? newQuantity : 0);
             },
             error: function (xhr, status, error) {
-              // Handle error response
-              alert("Error creating supply request: " + xhr.responseText);
+              alert("Error decrementing quantity: " + xhr.responseText);
             },
           });
+          $("#giveSupplyModal").modal("hide");
         });
       });
     </script>
