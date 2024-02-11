@@ -15,7 +15,7 @@ from importRegister import open_register
 from uploadPhoto import upload_photo
 from resources import resources
 from settings import settings
-from nonObjDiagnosis import diagnosis
+# from nonObjDiagnosis import diagnosis
 from createSupply import create_supply
 # from registering import register
 
@@ -58,3 +58,11 @@ def register():
         return redirect(url_for('login'))
     else:
         return "Institution already exists."
+
+@app.route('/diagnosis')
+def diagnosis():
+    return render_template('diagnosis.html', hospitals=users.keys())
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    

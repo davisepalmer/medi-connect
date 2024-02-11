@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_pymongo import PyMongo
 from app import app, mongo
+from pymongo import MongoClient
+
 @app.route('/resources')
 def resources():
     supplies = mongo.db.supplies.find()
