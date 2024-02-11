@@ -69,96 +69,153 @@
     <!-- Tabs for hospitals giving supplies and hospitals requesting supplies -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="supplyRequests-tab" data-toggle="tab" href="#supplyRequests" role="tab"
-          aria-controls="supplyRequests" aria-selected="true">Requested Supplies</a>
+        <a class="nav-link active" id="myProfile-tab" data-toggle="tab" href="#myProfile" role="tab"
+          aria-controls="myProfile" aria-selected="true">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="supplyRequests-tab" data-toggle="tab" href="#supplyRequests" role="tab"
+          aria-controls="supplyRequests" aria-selected="false">Requested Supplies</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="supplyGivers-tab" data-toggle="tab" href="#supplyGivers" role="tab"
           aria-controls="supplyGivers" aria-selected="false">Claim Supplies</a>
       </li>
     </ul>
+      <div class="tab-content" id="myTabContent">
+        <!-- Tab content for My Profile -->
+        <div class="tab-pane fade show active" id="myProfile" role="tabpanel" aria-labelledby="myProfile-tab">
+          <div class="row">
+            <div class="col">
+              <h3>Supplies Requested</h3>
+              <!-- Table for supplies requested -->
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Supply Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Actions</th> <!-- New column for actions -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Example row -->
+                  <tr>
+                    <td>Example Supply 1</td>
+                    <td>10</td>
+                    <td>
+                      <!-- Button to interact with the row -->
+                      <button type="button" class="btn btn-primary">Interact</button>
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+            <div class="col">
+              <h3>Supplies to Donate</h3>
+              <!-- Table for supplies to donate -->
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Supply Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Actions</th> <!-- New column for actions -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Example row -->
+                  <tr>
+                    <td>Example Supply 2</td>
+                    <td>20</td>
+                    <td>
+                      <!-- Button to interact with the row -->
+                      <button type="button" class="btn btn-primary">Interact</button>
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
+          </div>  
+        </div>  
+        <!-- Tab content for hospitals requesting supplies -->
+        <div class="tab-pane fade show" id="supplyRequests" role="tabpanel" aria-labelledby="supplyRequests-tab">
+          <!-- Create New Request Button -->
+          <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createRequestModal" style="float: right; margin:8px;">
+            Create New Request
+          </button>
 
-    <!-- Tab content for hospitals requesting supplies -->
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="supplyRequests" role="tabpanel" aria-labelledby="supplyRequests-tab">
-        <!-- Create New Request Button -->
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createRequestModal">
-          Create New Request
-        </button>
-
-        <!-- Modal for Create New Supply Request -->
-        <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog"
-          aria-labelledby="createRequestModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="createRequestModalLabel">
-                  Create New Request
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <!-- Form fields for creating new request -->
-                <form id="createRequestForm">
-                  <div class="form-group">
-                    <label for="supplyName">Supply Name</label>
-                    <input type="text" class="form-control" id="supplyName" />
-                  </div>
-                  <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" />
-                  </div>
-                  <div class="form-group">
-                    <label for="requestedBy">Requested By</label>
-                    <input type="text" class="form-control" id="requestedBy" />
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary" id="submitRequest">
-                  Submit
-                </button>
+          <!-- Modal for Create New Supply Request -->
+          <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog"
+            aria-labelledby="createRequestModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="createRequestModalLabel">
+                    Create New Request
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Form fields for creating new request -->
+                  <form id="createRequestForm">
+                    <div class="form-group">
+                      <label for="supplyName">Supply Name</label>
+                      <input type="text" class="form-control" id="supplyName" />
+                    </div>
+                    <div class="form-group">
+                      <label for="quantity">Quantity</label>
+                      <input type="number" class="form-control" id="quantity" />
+                    </div>
+                    <div class="form-group">
+                      <label for="requestedBy">Requested By</label>
+                      <input type="text" class="form-control" id="requestedBy" />
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary" id="submitRequest">
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Supply Table for Requests-->
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Supply Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Requested By</th>
+                <th scope="col"></th>
+                <!-- Empty header for the "Give" button column -->
+              </tr>
+            </thead>
+            <tbody>
+              {% for supply in supplies %}
+              <tr>
+                <td>{{ supply.item }}</td>
+                <td>{{ supply.quantity }}</td>
+                <td>{{ supply.originHosp }}</td>
+                <td><button type="button" class="btn btn-success">Give</button></td>
+                <!-- Button to give supply -->
+              </tr>
+              {% endfor %}
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
         </div>
 
-        <!-- Supply Table for Requests-->
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Supply Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Requested By</th>
-              <th scope="col"></th>
-              <!-- Empty header for the "Give" button column -->
-            </tr>
-          </thead>
-          <tbody>
-            {% for supply in supplies %}
-            <tr>
-              <td>{{ supply.item }}</td>
-              <td>{{ supply.quantity }}</td>
-              <td>{{ supply.originHosp }}</td>
-              <td><button type="button" class="btn btn-success">Give</button></td>
-              <!-- Button to give supply -->
-            </tr>
-            {% endfor %}
-            <!-- Add more rows as needed -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Tab content for hospitals giving supplies -->
-      <div class="tab-pane fade" id="supplyGivers" role="tabpanel" aria-labelledby="supplyGivers-tab">
-        <div class="tab-pane fade show active" id="supplyGiven" role="tabpanel" aria-labelledby="supplyGiven-tab">
+        <!-- Tab content for hospitals giving supplies -->
+        <div class="tab-pane fade show" id="supplyGivers" role="tabpanel" aria-labelledby="supplyGivers-tab">
           <!-- Create New Supply Button -->
-          <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createGivingModal">
+          <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createGivingModal" style="float: right; margin: 8px;">
             Create New Supply
           </button>
 
@@ -229,6 +286,8 @@
         </div>
       </div>
 
+
+
       <!-- Modal for Give Supply -->
       <div class="modal fade" id="giveSupplyModal" tabindex="-1" role="dialog" aria-labelledby="giveSupplyModalLabel"
         aria-hidden="true">
@@ -256,6 +315,21 @@
     </div>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          // Attach click event handler to all tab links
+          $('.nav-link').on('click', function() {
+            // Get the ID of the target tab content
+            var targetTab = $(this).attr('href');
+            
+            // Hide all tab contents except the target tab
+            $('.tab-pane').not(targetTab).removeClass('show active').addClass('fade');
+            
+            // Show the target tab content
+            $(targetTab).addClass('show active').removeClass('fade');
+          });
+        });
+      </script>
       <script>
         $(document).ready(function () {
           // Handle form submission
