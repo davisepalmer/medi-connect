@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 from flask_bootstrap import Bootstrap
 from flask_pymongo import PyMongo
-
+import json
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -19,14 +19,12 @@ from nonObjDiagnosis import diagnosis
 from createSupply import create_supply
 # from registering import register
 
-
-users = {
-    'Hospital 1': 'password',
-    'Hospital 2': 'password',
-    'Hospital 3': 'password',
-    'Hospital 4': 'password',
-    'Hospital 5': 'password'
-}
+# Load existing institutions from JSON file
+try:
+    with open('institutions.json', 'r') as f:
+        users = json.load(f)
+except FileNotFoundError:
+    users = {}
 
 @app.route('/')
 def index():
@@ -53,9 +51,10 @@ def register():
 
     if institution not in users:
         users[institution] = password
+        print(users)  # Print the users dictionary
+        # Save updated institutions to JSON file
+        with open('institutions.json', 'w') as f:
+            json.dump(users, f)
         return redirect(url_for('login'))
     else:
         return "Institution already exists."
-
-if __name__ == '__main__':
-    app.run(debug=True)
