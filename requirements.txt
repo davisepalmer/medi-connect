@@ -3,3 +3,4 @@ Flask
 Flask-Bootstrap
 pymongo
 Flask-PyMongo
+PyQt5

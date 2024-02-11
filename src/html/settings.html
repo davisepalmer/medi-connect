@@ -47,12 +47,33 @@
         <li class="list-group-item"><a href="#">Change Password</a></li>
         <li class="list-group-item"><a href="#">Change Username</a></li>
         <li class="list-group-item"><a href="#">Delete Account</a></li>
-        <li class="list-group-item"><a href="#">Privacy Policy</a></li>
+        <!-- Privacy Policy link calls JavaScript function -->
+        <li class="list-group-item">
+          <a href="#" id="privacyPolicy">Privacy Policy</a>
+        </li>
       </ul>
     </div>
 
     <footer>
       <p>&copy; 2024 MediConnect. Built for Hacklytics 2024!</p>
     </footer>
+
+    <script>
+      document
+        .getElementById("privacyPolicy")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default action of the link
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/removeZeros", true);
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              alert("Zero quantity documents removed successfully.");
+            } else if (xhr.readyState === 4 && xhr.status !== 200) {
+              alert("Error removing zero quantity documents.");
+            }
+          };
+          xhr.send();
+        });
+    </script>
   </body>
 </html>
