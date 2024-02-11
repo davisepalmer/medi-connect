@@ -1,6 +1,7 @@
 # Medi-Connect
 
 Developers: Leela Ravoori, Shasshank Sethuraman, Sahran Ashoor, and Davis Palmer
+@lrav26, @shasshank12, @ashoorsahran, @davisepalmer
 
 Date: 2/12/2024
 
