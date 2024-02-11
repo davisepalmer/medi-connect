@@ -98,8 +98,8 @@
             <label for="hospital">Receiving Hospital</label>
             <select class="form-control" name="institution">
               <option value="">Select Institution</option>
-              {% for institution in users %}
-              <option value="{{ institution }}">{{ institution }}</option>
+              {% for hospital in hospitals %}
+              <option value="{{ hospital }}">{{ hospital }}</option>
               {% endfor %}
             </select>
           </div>
