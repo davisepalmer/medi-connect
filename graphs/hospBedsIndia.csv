@@ -1,0 +1,27 @@
+States/UTs,Number of hospital beds in public sector,Number of hospital beds in private sector,Total number of hospital beds (public+private),,Bed-to-Pop. Ratio,
+Sikkim,"1,560",392,"1,952",610000,312.5,beds per person
+Mizoram,"1,997",499,"2,496",1000000,400.6410256,beds per person
+Nagaland,"1,880",681,"2,561",1900000,741.8976962,beds per person
+Goa,"3,012","1,572","4,584","1,458,000",318.0628272,beds per person
+Tripura,"4,429",238,"4,667",3673000,787.0152132,beds per person
+Meghalaya,"4,457",787,"5,244",3000000,572.0823799,beds per person
+Himachal Pradesh,"12,399","3,641","16,040","6,800,000",423.9401496,beds per person
+Chhattisgarh,"9,412","8,018","17,430","25,500,000",1462.994836,beds per person
+Uttarakhand,"8,512","15,331","23,843","10,000,000",419.4103091,beds per person
+Assam,"17,142","7,036","24,178","31,200,000",1290.429316,beds per person
+Odisha,"18,519","7,131","25,650","41,900,000",1633.528265,beds per person
+Jharkhand,"10,784","15,712","26,496","32,900,000",1241.69686,beds per person
+Bihar,"11,664","19,193","30,857","130,000,000",4212.982468,beds per person
+Delhi,"24,383","15,072","39,455","33,800,000",856.6721582,beds per person
+Punjab,"17,933","43,064","60,997","27,700,000",454.1206945,beds per person
+Gujarat,"20,172","44,690","64,862","60,000,000",925.040856,beds per person
+Madhya Pradesh,"31,106","33,833","64,939","72,600,000",1117.972251,beds per person
+Andhra Pradesh,"23,138","60,092","83,230","49,500,000",594.7374745,beds per person
+Rajasthan,"47,054","46,122","93,176","68,000,000",729.8016657,beds per person
+Kerala,"38,004","61,223","99,227","33,000,000",332.5707721,beds per person
+Telangana,"20,983","78,936","99,919","39,000,000",390.3161561,beds per person
+West Bengal,"78,566","34,969","113,535","80,000,000",704.6285286,beds per person
+Tamil Nadu,"77,532","77,843","155,375","72,000,000",463.3950121,beds per person
+Maharashtra,"51,446","180,293","231,739","126,000,000",543.7151278,beds per person
+Karnataka,"69,721","192,388","262,109","64,000,000",244.1732256,beds per person
+Uttar Pradesh,"76,260","205,142","281,402","241,000,000",856.4260382,beds per person

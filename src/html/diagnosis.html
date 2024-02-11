@@ -96,11 +96,11 @@
           </div>
           <div class="form-group">
             <label for="hospital">Receiving Hospital</label>
-            <select class="form-control" id="hospital">
-              <option value="Hospital 1">Hospital 1</option>
-              <option value="Hospital 2">Hospital 2</option>
-              <option value="Hospital 4">Hospital 4</option>
-              <option value="Hospital 5">Hospital 5</option>
+            <select class="form-control" name="institution">
+              <option value="">Select Institution</option>
+              {% for institution in users %}
+              <option value="{{ institution }}">{{ institution }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="form-group">
