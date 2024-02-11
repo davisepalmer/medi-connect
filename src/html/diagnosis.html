@@ -185,36 +185,6 @@
           $(".response-textarea").hide();
           alert("View requests for comments functionality");
         });
-
-        // Function to handle form submission
-        $("#uploadPhotoForm").submit(function (event) {
-          event.preventDefault(); // Prevent default form submission
-
-          var formData = new FormData();
-          formData.append("photo", $("#photo")[0].files[0]);
-          formData.append("hospital", $("#hospital").val());
-          formData.append("note", $("#note").val());
-
-          $.ajax({
-            type: "POST",
-            url: "diagnosis/upload",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-              // Handle success response
-              alert("Photo uploaded successfully!");
-              // Optionally, set the hospital's response in the textarea
-              $("#hospitalResponse").val(
-                "Diagnosis received. We will review it shortly."
-              );
-            },
-            error: function (xhr, status, error) {
-              // Handle error response
-              alert("Error uploading photo: " + xhr.responseText);
-            },
-          });
-        });
       });
     </script>
   </body>
