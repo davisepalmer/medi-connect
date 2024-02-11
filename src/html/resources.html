@@ -86,51 +86,51 @@
         <div class="tab-pane fade show active" id="myProfile" role="tabpanel" aria-labelledby="myProfile-tab">
           <div class="row">
             <div class="col">
-              <h3>Supplies Requested</h3>
+              <h3 style="margin: 8px">Supplies Requested</h3>
               <!-- Table for supplies requested -->
               <table class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Supply Name</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Actions</th> <!-- New column for actions -->
+                    <th scope="col"></th>
+                    <!-- Empty header for the "Give" button column -->
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Example row -->
+                  {% for thinge in profile %}
                   <tr>
-                    <td>Example Supply 1</td>
-                    <td>10</td>
-                    <td>
-                      <!-- Button to interact with the row -->
-                      <button type="button" class="btn btn-primary">Interact</button>
-                    </td>
+                    <td>{{ thinge.item }}</td>
+                    <td>{{ thinge.quantity }}</td>
+                    <td><button type="button" class="btn btn-success">Delete</button></td>
+                    <!-- Button to give supply -->
                   </tr>
+                  {% endfor %}
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>
             </div>
             <div class="col">
-              <h3>Supplies to Donate</h3>
+              <h3 style="margin: 8px">Supplies Surplus</h3>
               <!-- Table for supplies to donate -->
               <table class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Supply Name</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Actions</th> <!-- New column for actions -->
+                    <th scope="col"></th>
+                    <!-- Empty header for the "Give" button column -->
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Example row -->
+                  {% for thing in profile2 %}
                   <tr>
-                    <td>Example Supply 2</td>
-                    <td>20</td>
-                    <td>
-                      <!-- Button to interact with the row -->
-                      <button type="button" class="btn btn-primary">Interact</button>
-                    </td>
+                    <td>{{ thing.item }}</td>
+                    <td>{{ thing.quantity }}</td>
+                    <td><button type="button" class="btn btn-success">Delete</button></td>
+                    <!-- Button to give supply -->
                   </tr>
+                  {% endfor %}
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>

@@ -7,5 +7,6 @@ def resources():
     supplies = mongo.db.supplies.find()
     giving = mongo.db.giving.find()
     profile = mongo.db.profile.find()
-    return render_template('resources.html', supplies=supplies, giving=giving, profile=profile)
+    profile2 = mongo.db.profile2.find()
+    return render_template('resources.html', supplies=supplies, giving=giving, profile=profile, profile2=profile2)
     
