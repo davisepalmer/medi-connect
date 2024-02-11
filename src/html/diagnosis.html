@@ -9,36 +9,39 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <style>
-      .center-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 80vh; /* Reduce the height for better placement */
+      .image-container {
+        position: relative;
+        overflow: hidden;
       }
-      h1 {
-        margin-bottom: 20px;
+
+      .image-link {
+        display: block;
       }
-      .response-textarea {
-        margin-top: 20px;
+
+      .request-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
       }
-      .btn-group {
-        margin-top: 20px;
-      }
-      .previous-requests {
-        margin-top: 50px;
-      }
-      .previous-requests h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .previous-requests img {
-        width: 200px;
+
+      .blurred-image {
+        width: 100%;
         height: auto;
-        margin-bottom: 10px;
+        filter: blur(4px);
+        transition: filter 0.3s ease;
       }
-      .previous-requests .request-info {
-        text-align: center;
-        margin-bottom: 30px;
+
+      .image-container:hover .blurred-image {
+        filter: blur(0);
+      }
+
+      .image-container:hover .request-info {
+        background-color: rgba(255, 255, 255, 0.95);
       }
     </style>
   </head>
@@ -135,30 +138,50 @@
       <!-- Sample images and text -->
       <div class="row">
         <div class="col-md-4">
-          <img src="image1.jpg" alt="Image 1" />
-          <div class="request-info">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              quis lorem ut libero malesuada feugiat.
-            </p>
+          <div class="image-container">
+            <a href="#" class="image-link">
+              <img src="static/12312.jpg" alt="Image 1" class="blurred-image" />
+            </a>
+            <div class="request-info">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis lorem ut libero malesuada feugiat.
+              </p>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
-          <img src="image2.jpg" alt="Image 2" />
-          <div class="request-info">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              quis lorem ut libero malesuada feugiat.
-            </p>
+          <div class="image-container">
+            <a href="#" class="image-link">
+              <img
+                src="static/125123.jpg"
+                alt="Image 2"
+                class="blurred-image"
+              />
+            </a>
+            <div class="request-info">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis lorem ut libero malesuada feugiat.
+              </p>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
-          <img src="image3.jpg" alt="Image 3" />
-          <div class="request-info">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              quis lorem ut libero malesuada feugiat.
-            </p>
+          <div class="image-container">
+            <a href="#" class="image-link">
+              <img
+                src="static/243222.png"
+                alt="Image 3"
+                class="blurred-image"
+              />
+            </a>
+            <div class="request-info">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis lorem ut libero malesuada feugiat.
+              </p>
+            </div>
           </div>
         </div>
       </div>
