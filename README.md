@@ -33,4 +33,4 @@ Python, HTML/CSS, JavaScript
 MongoDB Atlas data base
 Flask front-end
 
-Create for GT Hackathon: 'Hacklytics 2024'
+Created for GT Hackathon: 'Hacklytics 2024'
