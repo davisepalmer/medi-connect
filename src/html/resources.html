@@ -276,7 +276,7 @@
                 <td>{{ give.item }}</td>
                 <td>{{ give.quantity }}</td>
                 <td>{{ give.originHosp }}</td>
-                <td><button type="button" class="btn btn-success">Claim</button></td>
+                <td><button type="button" class="btn btn-success claim-button" data-supply-id="{{ give.id }}">Claim</button></td>
                 <!-- Button to give supply -->
               </tr>
               {% endfor %}

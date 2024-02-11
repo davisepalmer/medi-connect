@@ -105,3 +105,23 @@ $(document).ready(function () {
     $("#giveSupplyModal").modal("hide");
   });
 });
+
+$(document).ready(function() {
+  // Handle click on "Claim" button
+  $(".claim-button").click(function() {
+    var supplyId = $(this).data("supply-id");
+
+    $.ajax({
+      type: "POST",
+      url: "/decrement", // Change the URL to your server route
+      data: { supplyId: supplyId },
+      success: function(response) {
+        alert("Supply claimed successfully!");
+        // Optionally, update the table or perform any other actions after claiming the supply
+      },
+      error: function(xhr, status, error) {
+        alert("Error claiming supply: " + xhr.responseText);
+      }
+    });
+  });
+});
