@@ -4,13 +4,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{titlesec}
+\usepackage{graphicx}
 \usepackage{lipsum} % For dummy text, you can remove this in your actual document
 
 % Customizing margins
 \geometry{a4paper, margin=1in}
 
 % Customizing section headings
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{.75em}{}
 \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
 
 \title{Medi-Connect}
@@ -20,50 +21,33 @@
 \begin{document}
 
 \maketitle
+\thispagestyle{empty} % Removes page number from this page
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.15\textwidth]{logoFinal.png}
+\end{figure}
 
 \section*{Project Root}
 
-In today's rapidly evolving healthcare landscape, efficient communication and collaboration among healthcare 
-institutions have become \emph{significantly} important. With high-magnitude natural disasters and the threat
-of wars shutting down healthcare systems of entire countries, and global emergencies of the likes of the
-COVID-19 pandemic, we're now face-to-face with an admittantly daunting objective. Healthcare needs a 
-'red alert' system. An actionable defense against the unexpected, accessible no matter where you are. In 
-response, we'd like to present MediConnect, an application that facilitates a seamless sharing of 
-resources, solicits second opinions on diagnoses, and brings out a unified platform of collaboration for
-hospitals across the globe. By fostering interconnectedness among hospitals, MediConnect has the potential to
-enables medical professionals to access critical resources swiftly in times of emergency. It additionally 
-facilitates the exchange of expertise, ultimately leading to more accurate diagnoses and optimized treatment 
-plans; moreover, in an era where medical knowledge proliferates at an unprecedented rate, having a centralized 
-platform for sharing best practices and up-to-date medical literature becomes indispensable for healthcare 
-practitioners striving to deliver the highest standard of care to their patients. Developing and 
-utilizing such an application is an essential step towards revolutionizing healthcare delivery and improving 
-patient outcomes globally.
+Our Hospital Resource Management System streamlines resource sharing among hospitals, optimizing bed allocation, medicine distribution, and facilitating second opinions from specialists. Hospitals can easily view and offer available beds, share surplus medicines, and seek expert advice through secure channels. Additionally, the system enables coordinated emergency responses and provides valuable insights through data analytics. By promoting collaboration and efficiency, our software enhances patient care, reduces costs, and strengthens disaster preparedness within the healthcare system.
 
 \section*{Development Process}
 
-Phase I saw our group begin a verbal brainstorm of ideas, accompanied by a combination of handwritten notes, 
-projector demonstrations, and whiteboard flowcharts that outlined the rough framework and direction we expected to follow.
-In anticipation of this direction, we prompty decided on the most appropriate tech stack, considering what goals
-we had in mind. With the goal of a light-weight, data-oriented and easily-ammendable solution, we agreed to utlizie
-a Python backend and HTML/CSS frontend under a Flask framework. With each team member being assigned to a specific
-segment of our hurriedly-drawn 'To-Do' list, we capitalized on our strengths from prior experiences and began to code,
-closely documenting our actions and communicating during vital source requests. As members had finished current 'To-Do' tasks,
-they quickly picked up the next most pressing objective. Deliverables were prioritized, with additional features
-implemented soon after.
+Our development process started with throwing around ideas and brainstorming. We came in with the idea that we wanted to target the healthcare track and eventually landed on the idea of the amount of resources lost in hospitals due to expiration dates, and how many hospitals have resources they \emph{can} share. Our software enables hospitals to share their extra resources allowing for impoverished hospitals to have the assistance they need while making it easier for private, highly-corporate, and really any institution to share their resources.
 
 \section*{Challenges and Obstacles}
 
 As a team of students who have never met prior to the event, all of which hold very little experience performing
-in hackathon settings, if at all, were tasked with quickly adapting to a new unfamiliar programming environment.
+in hackathon settings, if at all, were tasked with quickly adapting to an unfamiliar programming environment.
 With a thirty-six hour clock soon to start ticking, our team chemistry had proven itself as we worked together
 to familiarize ourselves with the Github environment. Through the development of our codebase, we faced frequent
-roadblocks in honing common practices and etiquette when managing source requests, as unsychronized // unnecessary
+roadblocks in honing common practices and etiquette when managing source requests, as unsychronized/unnecessary
 push and pull requests easily shattered our mental timelines, abrubtly halting our flow of productivity. It took
 time to familiarize ourselves with these environments, but as our communication developed, we established
 a streamlined train of collaboration.
 
 \section*{Acknowledgements}
+From all of us, we thank you for inviting us to Georgia Tech's Hacklytics, and it was great to be a part of this event. We hope you like our project and idea, we have a lot of ideas for it planned for the future!
 
-\newpage
-\section*{Works Cited}
 \end{document}
