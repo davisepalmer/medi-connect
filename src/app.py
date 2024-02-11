@@ -63,6 +63,18 @@ def register():
 def diagnosis():
     return render_template('diagnosis.html', hospitals=users.keys())
 
+@app.route('/incoming_requests')
+def incoming_requests():
+    # Fetch diagnosis requests from the database or any source
+    diagnosis_requests = [
+        {"id": 1, "hospital": "Emory Hospital", "diagnosis": "Patient exhibits symptoms of viral infection; recommend rest and hydration"},
+        {"id": 2, "hospital": "Grady Memorial", "diagnosis": "Preliminary diagnosis suggests allergic reaction; advise antihistamines and avoid allergens."},
+        {"id": 3, "hospital": "Northside Hospital", "diagnosis": "Suspected fracture in the right arm; urgent X-ray and immobilization required."},
+        {"id": 4, "hospital": "Methodist Hospital", "diagnosis": "Symptoms consistent with gastroenteritis; hydration and electrolyte balance crucial for recovery."}
+        # Add more diagnosis requests as needed
+    ]
+    return render_template('incoming_requests.html', requests=diagnosis_requests)
+
 if __name__ == '__main__':
     app.run(debug=True)
     
