@@ -1,4 +1,4 @@
-
+console.log('test0')
 $(document).ready(function() {
   // Attach click event handler to all tab links
   $('.nav-link').on('click', function() {
@@ -13,7 +13,7 @@ $(document).ready(function() {
   });
 });
 
-
+console.log('test1')
 $(document).ready(function () {
   // Handle form submission
   $("#submitRequest").click(function () {
@@ -40,6 +40,7 @@ $(document).ready(function () {
     });
   });
 
+  console.log('test2')
   // Handle form submission
   $("#submitGiving").click(function () {
     var givingName = $("#givingName").val();
@@ -65,14 +66,9 @@ $(document).ready(function () {
     });
   });
 
-  // Handle click on "Give" button
-  $(".give-button").click(function () {
-    var supplyName = $(this).data("supply");
-    $("#selectedSupply").text("Selected Supply: " + supplyName);
-  });
-
+console.log('test3')
   // Handle click on "Decrement" button
-  $("#decrementButton").click(function () {
+  $("#Decrement").click(function () {
     var supplyName = $("#selectedSupply").text().split(": ")[1];
     var count = parseInt($("#decrementCount").val());
 
@@ -106,22 +102,31 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function() {
-  // Handle click on "Claim" button
-  $(".claim-button").click(function() {
-    var supplyId = $(this).data("supply-id");
+// Handle form submission when the form inside the modal is submitted
+$("#confirmDecrement").submit(function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    $.ajax({
-      type: "POST",
-      url: "/decrement", // Change the URL to your server route
-      data: { supplyId: supplyId },
-      success: function(response) {
-        alert("Supply claimed successfully!");
-        // Optionally, update the table or perform any other actions after claiming the supply
-      },
-      error: function(xhr, status, error) {
-        alert("Error claiming supply: " + xhr.responseText);
-      }
-    });
+  // Retrieve supply name and decrement count from form inputs
+  var supplyName = $("#supplyName").val();
+  var decrementCount = $("#decrementCount").val();
+
+  // Perform form validation here (e.g., check if input fields are not empty)
+
+  // Make AJAX request to decrement endpoint
+  $.ajax({
+    type: "POST",
+    url: "/decrement",
+    contentType: "application/json",
+    data: JSON.stringify({
+      supplyName: supplyName,
+      decrementCount: decrementCount,
+    }),
+    success: function (response) {
+      alert(response.message);
+      // Optionally, update the table with the new supply data
+    },
+    error: function (xhr, status, error) {
+      alert("" + xhr.responseText);
+    },
   });
 });

@@ -276,20 +276,50 @@
                 <td>{{ give.item }}</td>
                 <td>{{ give.quantity }}</td>
                 <td>{{ give.originHosp }}</td>
-                <td><button type="button" class="btn btn-success claim-button" data-supply-id="{{ give.id }}">Claim</button></td>
+                <td><button type="button" class="btn btn-success claim-button" data-toggle="modal" data-target="#decrementModal">Claim</button></td>
                 <!-- Button to give supply -->
               </tr>
               {% endfor %}
               <!-- Add more rows as needed -->
             </tbody>
           </table>
+
+          <!-- Modal for Claim -->
+          <div class="modal fade" id="decrementModal" tabindex="-1" role="dialog" aria-labelledby="decrementModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="decrementModalLabel">Claim Supplies</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="decrementForm">
+                    <div class="form-group">
+                      <label for="decrementSupplyName">Supply Name</label>
+                      <input type="text" class="form-control" id="decrementSupplyName">
+                    </div>
+                    <div class="form-group">
+                      <label for="decrementCount">Quantity</label>
+                      <input type="number" class="form-control" id="decrementCount" value="1">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="confirmDecrement">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>          
         </div>
       </div>
 
 
 
       <!-- Modal for Give Supply -->
-      <div class="modal fade" id="giveSupplyModal" tabindex="-1" role="dialog" aria-labelledby="giveSupplyModalLabel"
+      <div class="modal fade" id="claim" tabindex="-1" role="dialog" aria-labelledby="claimlabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -316,28 +346,130 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="resources.js"></script>
+<script>$(document).ready(function() {
+  // Attach click event handler to all tab links
+  $('.nav-link').on('click', function() {
+    // Get the ID of the target tab content
+    var targetTab = $(this).attr('href');
+    
+    // Hide all tab contents except the target tab
+    $('.tab-pane').not(targetTab).removeClass('show active').addClass('fade');
+    
+    // Show the target tab content
+    $(targetTab).addClass('show active').removeClass('fade');
+  });
+});
+
+$(document).ready(function () {
+  // Handle form submission
+  $("#submitRequest").click(function () {
+    var supplyName = $("#supplyName").val();
+    var quantity = $("#quantity").val();
+    var requestedBy = $("#requestedBy").val();
+
+    $.ajax({
+      type: "POST",
+      url: "/create_supply",
+      contentType: "application/json",
+      data: JSON.stringify({
+        supplyName: supplyName,
+        quantity: quantity,
+        requestedBy: requestedBy,
+      }),
+      success: function (response) {
+        alert(response.message);
+        // Optionally, update the table with the new supply data
+      },
+      error: function (xhr, status, error) {
+        alert("Error creating supply: " + xhr.responseText);
+      },
+    });
+  });
+
+  // Handle form submission
+  $("#submitGiving").click(function () {
+    var givingName = $("#givingName").val();
+    var quantityb = $("#quantityb").val();
+    var givenBy = $("#givenBy").val();
+
+    $.ajax({
+      type: "POST",
+      url: "/create_supply",
+      contentType: "application/json",
+      data: JSON.stringify({
+        givingName: givingName,
+        quantityb: quantityb,
+        givenBy: givenBy,
+      }),
+      success: function (response) {
+        alert(response.message);
+        // Optionally, update the table with the new supply data
+      },
+      error: function (xhr, status, error) {
+        alert("Error sss supply: " + xhr.responseText);
+      },
+    });
+  });
+  
+// Handle form submission when the form inside the modal is submitted
+$("#confirmDecrement").submit(function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Retrieve supply name and decrement count from form inputs
+  var supplyName = $("#supplyName").val();
+  var decrementCount = $("#decrementCount").val();
+
+  // Perform form validation here (e.g., check if input fields are not empty)
+
+  // Make AJAX request to decrement endpoint
+  $.ajax({
+    type: "POST",
+    url: "/decrement",
+    contentType: "application/json",
+    data: JSON.stringify({
+      supplyName: supplyName,
+      decrementCount: decrementCount,
+    }),
+    success: function (response) {
+      alert(response.message);
+      // Optionally, update the table with the new supply data
+    },
+    error: function (xhr, status, error) {
+      alert("" + xhr.responseText);
+  }});
+
+  // Handle click on "Decrement" button
+  // $("#Decrement").click(function () {
+  //   var supplyName = $("#selectedSupply").text().split(": ")[1];
+  //   var count = parseInt($("#decrementCount").val());
+
+  //   if (count <= 0) {
+  //     alert("Please enter a valid decrement count.");
+  //     return;
+  //   }
+
+  //   var quantityElement = $("td:contains(" + supplyName + ")").next();
+  //   var quantity = parseInt(quantityElement.text());
+
+  //   if (count > quantity) {
+  //     alert("Error: Decrement count exceeds available quantity.");
+  //     return;
+  //   }
+
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "/decrement_supply",
+  //     data: { supplyName: supplyName, count: count },
+  //     success: function (response) {
+  //       alert("Quantity decremented successfully!");
+  //       var newQuantity = quantity - count;
+  //       quantityElement.text(newQuantity >= 0 ? newQuantity : 0);
+  //     },
+  //     error: function (xhr, status, error) {
+  //       alert("Error decrementing quantity: " + xhr.responseText);
+  //     },
+  //   });
+  //   $("#giveSupplyModal").modal("hide");
+
+  </script>
 </html>
-
-<!-- @app.route('/decrement_supply', methods=['POST'])
-def decrement_supply():
-    data = request.json
-    supply_name = data.get('supplyName')
-    count = int(data.get('count'))
-
-    if supply_name and count > 0:
-        # Assuming you have a MongoDB collection named 'supplies'
-        supply = mongo.db.supplies.find_one({'item': supply_name})
-        if supply:
-            current_quantity = supply.get('quantity')
-            if count <= current_quantity:
-                new_quantity = current_quantity - count
-                mongo.db.supplies.update_one({'item': supply_name}, {'$set': {'quantity': new_quantity}})
-                return jsonify({'message': 'Quantity decremented successfully'}), 200
-            else:
-                return jsonify({'error': 'Decrement count exceeds available quantity'}), 400
-        else:
-            return jsonify({'error': 'Supply not found'}), 404
-    else:
-        return jsonify({'error': 'Invalid data provided'}), 400
- -->
