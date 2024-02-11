@@ -315,33 +315,6 @@
           </div>          
         </div>
       </div>
-
-
-
-      <!-- Modal for Give Supply -->
-      <div class="modal fade" id="claim" tabindex="-1" role="dialog" aria-labelledby="claimlabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="giveSupplyModalLabel">Give Supply</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p id="selectedSupply"></p>
-              <div class="form-group">
-                <label for="decrementCount">Decrement Count</label>
-                <input s type="number" class="form-control" id="decrementCount" value="1" />
-              </div>
-              <button type="button" class="btn btn-danger" id="decrementButton">
-                Decrement
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -411,43 +384,43 @@ $(document).ready(function () {
     });
   });
   
-// Handle form submission when the form inside the modal is submitted
-$("#confirmDecrement").submit(function (event) {
-  event.preventDefault(); // Prevent the default form submission
+// // Handle form submission when the form inside the modal is submitted
+// $("#confirmDecrement").submit(function (event) {
+//   event.preventDefault(); // Prevent the default form submission
 
-  // Retrieve supply name and decrement count from form inputs
-  var supplyName = $("#supplyName").val();
-  var decrementCount = $("#decrementCount").val();
+//   // Retrieve supply name and decrement count from form inputs
+//   var supplyName = $("#supplyName").val();
+//   var decrementCount = $("#decrementCount").val();
 
-  // Perform form validation here (e.g., check if input fields are not empty)
+//   // Perform form validation here (e.g., check if input fields are not empty)
 
-  // Make AJAX request to decrement endpoint
-  $.ajax({
-    type: "POST",
-    url: "/decrement",
-    contentType: "application/json",
-    data: JSON.stringify({
-      supplyName: supplyName,
-      decrementCount: decrementCount,
-    }),
-    success: function (response) {
-      alert(response.message);
-      // Optionally, update the table with the new supply data
-    },
-    error: function (xhr, status, error) {
-      alert("" + xhr.responseText);
-  }});
-}) } );
+//   // Make AJAX request to decrement endpoint
+//   $.ajax({
+//     type: "POST",
+//     url: "/decrement",
+//     contentType: "application/json",
+//     data: JSON.stringify({
+//       supplyName: supplyName,
+//       decrementCount: decrementCount,
+//     }),
+//     success: function (response) {
+//       alert(response.message);
+//       // Optionally, update the table with the new supply data
+//     },
+//     error: function (xhr, status, error) {
+//       alert("" + xhr.responseText);
+//   }});
+// }) } );
 
-  $(document).ready(function() {
-    // Handle click event on the claim button
-    $(".claim-button").click(function() {
-      // Get the supply name from the table row
-      var supplyName = $(this).closest("tr").find("td:first").text();
+//   $(document).ready(function() {
+//     // Handle click event on the claim button
+//     $(".claim-button").click(function() {
+//       // Get the supply name from the table row
+//       var supplyName = $(this).closest("tr").find("td:first").text();
       
-      // Set the supply name in the modal
-      $("#decrementSupplyName").val(supplyName);
-    });
+//       // Set the supply name in the modal
+//       $("#decrementSupplyName").val(supplyName);
+//     });
 
     // Handle form submission when the form inside the modal is submitted
     $("#confirmDecrement").click(function() {
