@@ -102,7 +102,7 @@
                   <tr>
                     <td>{{ thinge.item }}</td>
                     <td>{{ thinge.quantity }}</td>
-                    <td><button type="button" class="btn btn-success">Delete</button></td>
+                    <td><button type="button" class="btn btn-success" style="background-color:rgb(255, 74, 74); border-color:rgb(255, 74, 74)">Delete</button></td>
                     <!-- Button to give supply -->
                   </tr>
                   {% endfor %}
@@ -127,7 +127,7 @@
                   <tr>
                     <td>{{ thing.item }}</td>
                     <td>{{ thing.quantity }}</td>
-                    <td><button type="button" class="btn btn-success">Delete</button></td>
+                    <td><button type="button" class="btn btn-success" style="background-color:rgb(255, 74, 74); border-color:rgb(255, 74, 74)">Delete</button></td>
                     <!-- Button to give supply -->
                   </tr>
                   {% endfor %}
@@ -438,6 +438,44 @@ $("#confirmDecrement").submit(function (event) {
       alert("" + xhr.responseText);
   }});
 }) } );
+
+  $(document).ready(function() {
+    // Handle click event on the claim button
+    $(".claim-button").click(function() {
+      // Get the supply name from the table row
+      var supplyName = $(this).closest("tr").find("td:first").text();
+      
+      // Set the supply name in the modal
+      $("#decrementSupplyName").val(supplyName);
+    });
+
+    // Handle form submission when the form inside the modal is submitted
+    $("#confirmDecrement").click(function() {
+      // Retrieve supply name and decrement count from form inputs
+      var supplyName = $("#decrementSupplyName").val();
+      var decrementCount = $("#decrementCount").val();
+
+      // Perform form validation here (e.g., check if input fields are not empty)
+
+      // Make AJAX request to decrement endpoint
+      $.ajax({
+        type: "POST",
+        url: "/decrement",
+        contentType: "application/json",
+        data: JSON.stringify({
+          supplyName: supplyName,
+          decrementCount: decrementCount,
+        }),
+        success: function(response) {
+          alert(response.message);
+          // Optionally, update the table with the new supply data
+        },
+        error: function(xhr, status, error) {
+          alert("Error: " + xhr.responseText);
+        },
+      });
+    });
+  });
 
   // Handle click on "Decrement" button
   // $("#Decrement").click(function () {
