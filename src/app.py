@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
-app.config["MONGO_URI"] = "mongodb+srv://new-user-2:qy5T1AM3I9oCN8tk@supplies.nyyixjh.mongodb.net/<database>?retryWrites=true&w=majority"  
+app.config["MONGO_URI"] = "mongodb+srv://USERNAME:PASSWORD@supplies.KEY.mongodb.net/DATABASE?retryWrites=true&w=majority"  
 mongo = PyMongo(app)
 
 app.template_folder = 'html'
